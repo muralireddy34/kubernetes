@@ -1,0 +1,14 @@
+https://msguides.com/download-microsoft-office-windows-os
+
+cd /d %ProgramFiles%\Microsoft Office\Office16
+
+2.  for /f %x in ('dir /b ..\root\Licenses16\ProPlus2021VL_KMS*.xrm-ms') do cscript ospp.vbs /inslic:"..\root\Licenses16\%x"
+
+3.   cscript ospp.vbs /setprt:1688
+4.   cscript ospp.vbs /unpkey:6F7TH >nul
+5.   cscript ospp.vbs /inpkey:FXYTK-NJJ8C-GB6DW-3DYQT-6F7TH
+6.   cscript ospp.vbs /sethst:e8.us.to
+7.   cscript ospp.vbs /act
+
+
+https://azure-prd.auth.beeline.com/login?state=hKFo2SA0ZWptMHVHc2RiZUsxQUZHTnF6bzY3eHlCZFlFUnF6RKFupWxvZ2luo3RpZNkgQXVkTURaUkUzcnl0eUY0T0xTTEIwbG9YQXFMQmx1QW6jY2lk2SBObFFNNkxtWFpiNDZjZDhJdFhFUmZhNnc1cVZqWll4MQ&client=NlQM6LmXZb46cd8ItXERfa6w5qVjZYx1&protocol=oauth2&scope=openid%20email%20offline_access%20talent%3Aprofile%3Aread%20esignature%3Asettings%3Awrite&audience=https%3A%2F%2Fcws-apis.beeline.com&response_type=code&redirect_uri=https%3A%2F%2Fprod.beeline.com%2Frbc%2Fsecurity%2Fauth0%2Fauth0callbackhandler.ashx&client_site_id=10cae558-4a82-43e5-b2d0-92604866ea73&sp_link=y

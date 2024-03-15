@@ -1,0 +1,52 @@
+
+   1. Create a role with EKS or Admin permissions
+   2. Create a Ubuntu EC2 machine, and attach above role
+   3. Install EKSCTL AND KUBECTL
+   4. Install UNZIP and AWSCLI Latest Version 
+       apt update && apt install unzip -y
+
+   AWSCLI:
+   =======
+
+   	curl "https://awscli.amazonaws.com/awscli-e..." -o "awscliv2.zip"
+	unzip awscliv2.zip
+	sudo ./aws/install
+
+   EKSCTL: 
+   =======
+
+   	curl --silent --__cpLocation "https://github.com/weaveworks/eksctl/... -s)_amd64.tar.gz" | tar xz -C /tmp
+
+	mv eksctl /usr/local/bin
+
+
+   Kubectl:
+   ========
+
+   	curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)..."
+ 	mv kubectl /usr/local/bin
+
+	eksctl create cluster --name "mycluster" --version 1.28 \
+	--zones=us-east-1a,us-east-1b,us-east-1c --without-nodegroup
+
+	eksctl utils associate-iam-oidc-provider \
+	--region us-east-1 --cluster mycluster --approve
+--------------------------------------------------------
+
+================NodeGroup creation=============================
+
+	eksctl create nodegroup --cluster=mycluster --region=us-east-1 \
+	--name=mycluster-ng-1 --node-type=t2.micro \
+	--nodes=2 --nodes-min=2 --nodes-max=4 --node-volume-size=20 \
+	--ssh-access  --ssh-public-key=corp_key \
+	--managed --asg-access --external-dns-access --full-ecr-access \
+	--appmesh-access --alb-ingress-access
+
+======================Delete the Cluster===========================
+
+	eksctl get clusters
+	eksctl get nodegroup --cluster mycluster   ### ClusterName
+
+	eksctl delete nodegroup --cluster mycluster --name mycluster-ng-1 ## NodeGroupName
+
+	eksctl delete cluster --name=mycluster

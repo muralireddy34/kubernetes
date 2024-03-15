@@ -1,0 +1,23 @@
+ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQC8VUnPJwbWEU80D68lEnEZiCawKh5vXs7aDdKsFDt6K2Xm0q2ULV4U1/0jhEc3wVtNvIBbY5+LczP8kcE19SJAY2Fehf4hpBcjF+G+f6uEXF5l07HvNxLDx3tOFrqoEbUZOmEawPTvuqA2Gf82eEjNi9RVrbDXlYqb4POTzgwnj+rtP85HA1VFKXGMiJIIwNlW/mTdHrgHtvsyjwLvKeUZE6EjBkH+uSAeIjDWxaaCr3Cgc7OQBGf2jevfSGlHxtlLeUa5qLn1J3AxrUZMcmlVK8v2wf9FYEgjHuudeL7maMr+w2HMrVyrULfsp8BjWYCWLt2I/WpV+vik2klA+rlKrmBg68r5FakgJwDULT3YtnX+NyraO9w+URFmPbV3X5pc3VhWvBFpKqCwqQk/kEgU16Wgw/6Ut6BLFCdv18EFFDkE7BvfvX5m52srm0C7VL1AkTXurJtoVT8E1vvM7jyj+2DeXkjk/Bieb08XgWx7iJfQkzEZjiYf13JkOqHpips= ubuntu@Jenkins-Master
+
+
+
+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
+
+
+11b24e3528e126796adccaec9ed2e3cc46
+
+
+sqa_9b9a8259f21137e044d4fa16341a1902eeeb13e1
+
+
+dckr_pat_vinrXpHbvZAm5whcK7wSkvGBrfA
+
+
+http://54.193.86.234:8080/job/register-app-ci/
+
+
+m2Cu3UfHronscmO2
+
+7023043----ep no
+60004000---cpp

@@ -1,0 +1,55 @@
+pipeline {
+agent any
+stages {
+ stage (checkout code) {
+			steps {
+}
+}
+stage () {
+
+
+
+
+a= empty
+b= files
+
+
+
+Can you introduce about yourself?
+Can you tell me about your roles and responsibilities?
+What is command for list down the files in directory?
+What is the command to remove directory and that directory contains number of directories inside?
+What is git merge?
+How do you resolve merge conflicts?
+What is git rebase?
+Write sample Jenkinsfile?
+What is CI/CD?
+How do you create Jenkins agent?
+How do you create service for Jenkins agent?
+We have Ip addresses and string columns in a file, i need only Ip address. how you will do it?
+How do you sort numbers 1 to 10?
+Write shell script for 1 to 10 prime numbers?
+We are have two directories A and B. A is have files and b is empty directory then i need to copy files from A to B. So, what command i can use for that?
+What is docker?
+What is static code analysis?
+Did you involved on creating quality gates in SonarQube?
+We have one file in that we have many strings then i need particular string. What command we can use for that?
+What command we can use to change directory?
+Which SCM are you using?
+What is the last condition you are using before post actions in your pipeline script?
+Where you can define upstream jobs in Jenkins?
+Where you are placing your pipeline in Jenkins or in any SCM?
+How many conditions we can use for post build actions?
+What is meant by stages in Jenkinsfile?
+What is meant by shebang line(#!/bin/bash) in shell script?
+Are you using default quality gate or creating quality gates in SonarQube?
+Can you explain the flow of pipeline script?
+How will you share artifacts from one job to another job?
+What is the command to clone the repo?
+What are the projects you did and tell me the names?
+Explain the flow of projects you did?
+How many stages do you have in your pipeline script and what are they?
+Do you know about python?
+What do you observe build before static code analysis and build after static code analysis?  
+
+

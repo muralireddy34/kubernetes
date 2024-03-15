@@ -1,0 +1,13 @@
+git clone <repository_url>
+git clone -b dev --single-branch <repository_url>
+git config --global --list
+git config --global user.name "Your Name"
+git config --global user.email "your.email@example.com"
+git init
+git add .
+git commit -m "Commit message"
+git push origin main
+git remote add origin <repository_url>
+git log
+git show <Commit_id>
+

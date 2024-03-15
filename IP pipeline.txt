@@ -1,0 +1,99 @@
+pipeline {
+    agent any
+    stages {
+        stage('Checkout Code') {
+            steps {
+                checkout([$class: 'SubversionSCM', 
+                additionalCredentials: [], 
+                excludedCommitMessages: '', 
+                excludedRegions: '', 
+                excludedRevprop: '', 
+                excludedUsers: 'Muralidhar.reddy1655', // Exclude commits by SVN user 
+                filterChangelog: false, 
+                ignoreDirPropChanges: false, 
+                includedRegions: '', 
+                locations: [[cancelProcessOnExternalsFail: true, 
+                credentialsId: '5GIG_SVN', 
+                depthOption: 'infinity', 
+                ignoreExternalsOption: true, 
+                local: '.', 
+                remote: 'http://192.168.14.80/svn/hal_ct_drivers']], 
+                quietOperation: true, 
+                workspaceUpdater: [$class: 'UpdateUpdater']])
+            }
+        }
+        stage('Static code analysis') {
+            steps {
+                script {
+                    // Assuming 'remote-agent' is the label of the machine where PC-Lint is installed
+                    node('remote-agent') {
+                        // Add the provided WarningsPublisher step here
+                        step([$class: 'WarningsPublisher',
+                              consoleParsers: [[parserName:'PC-Lint']],
+                              defaultEncoding: '',
+                              excludePattern: '',
+                              healthy: '',
+                              includePattern: '',
+                              messagesPattern: '',
+                              unHealthy: '',
+                              useStableBuildAsReference: true
+                        ])
+                    }
+                }
+            }
+        }
+        // stage('Build') {
+        //     steps {
+        //         sh '''
+        //         cd project/i2cm/hal_ct_i2cm/qa/UT/Linux/Baremetal/Application
+        //         cmake CMakeLists.txt
+        //         make
+        //         '''
+        //     }
+        // }
+        // stage('Static code Analysis') {
+        //     steps {
+        //         script {
+        //             misraReport doFailOnError: true, 
+        //             grpFile: '', 
+        //             projectName: 'IP-Project', 
+        //             ruleSet: 'MISRA C 2012', 
+        //             softwareVersion: '${SOFTWARE_VERSION}', 
+        //             sourceListFile: 'out/listOfSourceFiles.txt', 
+        //             warningParser: 'PC-Lint',
+        //             warningsFile: 'out/pcLintWarnings.txt'
+        //         }
+        //     }
+        // }
+        // stage('Static Code Analysis on Windows') {
+        //     steps {
+        //         script {
+        //             // Windows machine details
+        //             def windowsMachine = '192.168.14.67'
+        //             def windowsUsername = 'ESDtraining'
+        //             def windowsPassword = 'Password@1'
+                    
+        //             // PC-lint details
+        //             def pclintExecutable = 'C:\\Keil\\UV4\\Uv4.exe'
+        //             def pclintConfigFile = 'E:\\pc-lint\\windows\\lnt\\au-misra3.lnt'
+        //             def sourceCodeDir = '/var/lib/jenkins/workspace/IP_Project_dev/project/i2cm/hal_ct_i2cm/qa/UT/Linux/Baremetal/Application'
+                    
+        //             // Run PC-lint remotely on Windows machine using SSH
+        //             bat "sshpass -p ${windowsPassword} ssh ${windowsUsername}@${windowsMachine} \"${pclintExecutable} ${sourceCodeDir} -u ${pclintConfigFile}\""
+                    
+        //             // Copy lint report back to Jenkins server (optional)
+        //             bat "sshpass -p ${windowsPassword} scp ${windowsUsername}@${windowsMachine}:C:/path/to/lint-report.txt ."
+        //         }
+        //     }
+        // }
+
+        // stage('Publish Results') {
+        //     steps {
+        //         // Depending on your setup, you may want to publish or archive linting results
+        //         // For example, archive the PC-lint report
+        //         archiveArtifacts artifacts: 'lint-report.txt', allowEmptyArchive: true
+        //     }
+        // }
+
+    }
+}

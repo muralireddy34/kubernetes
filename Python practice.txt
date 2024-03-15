@@ -1,0 +1,171 @@
+# sequence1 = range(2,10,2)
+# for i in sequence1:
+#     print(i)
+    
+# for j in range(1,5): #[0,1,2,3,4]
+#     print(j)
+
+
+# n=5
+# for i in range(n+1):
+#     print('*'*i)
+
+
+# dict1 = {"name":"DevOps","batch":1.0,"canvote":True,"name":"test"}
+# print(dict1)
+# print(dict1["name"])
+
+
+# list_data = [9,8,19,20]
+# print(list_data[0])
+
+
+# info = {"test",19,False,5.9,19}
+# print(info)
+
+
+# a=1
+# b=0
+# i=a>b
+# print(i)
+
+
+# a=1
+# b=1
+# i=a==b
+# print(i)
+
+# a=1
+# b=1
+# i=a!=b
+# print(i)
+
+# a=2
+# b=1
+# i=a>=b
+# print(i)
+
+
+# list1=['Praveen','Mohan','Surendhar']
+
+# for i  in list1:
+#     if i == 'Shiva':
+#         print("Available")
+#     else:
+#         print("Not in list")
+
+# i= "jenkins"
+# print (i.upper())
+
+# txt = "     Jenkins is a tool     "
+# x = txt.rstrip()
+# print(x)
+
+# a=1
+# b=2
+# i=a is b
+# print(i)
+
+# a=1
+# b=2
+# i=a is not b
+# print(i)
+
+# name="data"
+# for i in name:
+#     print(i)
+# tools=("Maven", "Jenkins", "Sonar", "Jira")
+# for x in tools:
+#     print(x)
+
+
+# def print_even_numbers(limit):
+#     for number in range(2,limit+1,2):
+#         print (number)
+# limit=10
+# print_even_numbers(limit)
+
+
+# for number in range(1,10):
+#     if number%2==0:
+#         print(number)
+
+# lower=1
+# upper=10
+# for num in range(lower,upper +1):
+#     if num > 1:
+#         for i in range (2,num):
+#             if (num % i) == 0:
+#                 break
+#         else:
+#             print(num)
+
+# count=5
+# while(count>0):
+#     print(count)
+#     count=count-1
+
+
+# sum=0
+# for i in range(1,10):
+#     sum=sum+i
+#     print(sum)
+
+
+# a=int(input("Please enter the value "))
+# b=int(input("Please enter the value "))
+# c=a+b
+# print(c)
+
+
+# a=[1, 3, 2, 5, 4]
+# a.sort
+# print(a)
+
+
+# a=[1, 3, 2, 5, 4]
+# b=sorted(a)
+# print(b)
+
+
+#list
+# a=[1,5,3,2,4,6]
+# a[0]=7
+# print(a)
+
+
+#tuple
+# a=(1,5,3,2,4,6)
+# a[0]=7
+# print(a)
+
+
+# for i in range(1,10):
+#     print(i)
+
+
+# dict1={"name":"devops", "batch":1.0, "canvote":True, "name":"test"}
+# print(dict1)
+# print (dict1["name"])
+
+
+# list_data=[9,8,19,20]
+# print(list_data[0])
+
+
+# list_data=[9,2.9,[-3,5],["jenkins","jira"]]
+# print(list_data[2])
+
+
+def f():
+    s="DevOps"
+    print(s)
+    s="python"
+f()
+print(s)
+
+
+list1 = ["apple", "two", "ten"]
+list2 = ["data", "tools", "one"]
+list3 = list1.extend(list2)
+print(list1)

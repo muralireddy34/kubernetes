@@ -1,0 +1,702 @@
+    1  clear
+    2  ls
+    3  apt update -y
+    4  apt upgrade -y
+    5  apt install unzip -y
+    6  clear
+    7  ls
+    8  curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+    9  ls
+   10  unzip awscliv2.zip
+   11  sudo ./aws/install
+   12  aws --version
+   13  ls
+   14  curl -Lo kops https://github.com/kubernetes/kops/releases/download/$(curl -s https://api.github.com/repos/kubernetes/kops/releases/latest | grep tag_name | cut -d '"' -f 4)/kops-linux-amd64
+   15  ls
+   16  chmod +x kops
+   17  kops
+   18  sudo mv kops /usr/local/bin/kops
+   19  kops
+   20  kops --version
+   21  kops version
+   22  kubectl
+   23  ls
+   24  kubectl
+   25  chmod 700 kubectl 
+   26  kubectl
+   27  mv kubectl /usr/local/bin/
+   28  ls
+   29  kubectl
+   30  kubectl --version
+   31  kubectl version
+   32  kubectl version --short
+   33  cd /
+   34  ls
+   35  ls -la
+   36  ssh-keygen
+   37  ls
+   38  ls -la
+   39  cd /.ssh
+   40  cd /home/ubuntu/
+   41  ls
+   42  ls -la
+   43  cd .ssh/
+   44  ls
+   45  cd ..
+   46  ssh-keygen
+   47  ls
+   48  ls -la
+   49  cd .ssh/
+   50  ls
+   51  cd /
+   52  ls -la
+   53  cd ~
+   54  ls -la
+   55  cd .ssh/
+   56  ls
+   57  aws configure
+   58  aws s3 ls
+   59  aws ec2 describe-vpcs
+   60  cd ..
+   61  apt install jq -y
+   62  ls
+   63  kops create cluster --name themurali.xyz --state=s3://themurali.xyz --zones=us-east-1b --node-count=2 --node-size=t3.medium --master-size=t3.medium --master-volume-size 20 --node-volume-size 10 --dns-zone=themurali.xyz --yes
+   64  kops validate --name themurali.xyz --state=s3://themurali.xyz
+   65  kops validate cluster --name themurali.xyz --state=s3://themurali.xyz
+   66  ls
+   67  kops get cluster --state=s3://themurali.xyz
+   68  kubectl get pods -A
+   69  kubectl get -n kube-system
+   70  kubectl get pods -n kube-system
+   71  kubectl run murali-pod --image=vinodhk070/vmtutes:v1
+   72  kubectl get pods
+   73  ls
+   74  kops create cluster --name themurali.xyz --state=s3://themurali.xyz --zones=us-east-1b --node-count=2 --node-size=t3.medium --master-size=t3.medium --master-volume-size 20 --node-volume-size 10 --dns-zone=themurali.xyz --yes
+   75  kops validate cluster --name themurali.xyz --state=s3://themurali.xyz
+   76  kubectl get pods
+   77  kops get cluster --state=s3://themurali.xyz
+   78  kubectl --version --short
+   79  kubectl version --short
+   80  kubectl version --short output
+   81  kubectl version
+   82  ps -ef | grep -i kubelet
+   83  ps -ef | grep -i cubelet
+   84  kubectl cluster-info
+   85  ls
+   86  kops create cluster --name themurali.xyz --state=s3://themurali.xyz --zones=us-east-1b --node-count=2 --node-size=t3.medium --master-size=t3.medium --master-volume-size 20 --node-volume-size 10 --dns-zone=themurali.xyz --yes
+   87  kops validate cluster --name themurali.xyz --state=s3://themurali.xyz
+   88  kubectl get pods
+   89  kops validate cluster --name themurali.xyz --state=s3://themurali.xyz
+   90  kubectl get pods
+   91  kubectl get pods -n kube-system
+   92  kubectl get pods
+   93  kubectl get pods -A
+   94  kubectl run vm1 --image=vinodhk070/vmtutes:v1
+   95  kubectl get pods
+   96  kubectl get pods -o wide
+   97  kubectl cluster info
+   98  kubectl cluster-info
+   99  kubectl run vm1 --image vinodhk070/vmtutes:v1 --dry-run -o yaml
+  100  ls
+  101  cat sample.yaml 
+  102  kubectl apply -f sample.yaml 
+  103  kubectl get pods -o wide
+  104* echo 'apiVersion: v1
+kind: Pod
+metadata:
+  creationTimestamp: null
+  labels:
+    run: vm3
+  name: vm3
+spec:
+  containers:
+  - image: vinodhk070/vmtutes:v1
+    name: vm3' | kubectl apply -f -
+  105  kubectl get pods -o wide
+  106  kubectl run vm4 --image vinodhk070/vmtutes:v1
+  107  kubectl get pods -o wide
+  108  kubectl describe pod vm1
+  109  kubectl exec vm1 -- bash
+  110  kubectl exec -it vm1 -- bash
+  111  kubectl get po
+  112  kubectl get pods -o wide
+  113  kubectl exec -it vm1 -- bash
+ echo 'apiVersion: apps/v1
+  134  kind: Deployment
+  135  metadata:
+  136    name: vm-deploy
+  137    labels:
+  138      app: nginx
+  139  spec:
+  140    replicas: 10
+  141    selector:
+  142      matchLabels:
+  143        app: nginx
+  144    template:
+  145      metadata:
+  146        labels:
+  147          app: nginx
+  148      spec:
+  149        containers:
+  150        - name: nginx
+  151          image: nginx:1.14.2
+  152          ports:
+  153          - containerPort: 80' | kubectl apply -f -
+  154  kubectl get deploy
+  155  kubectl get pods -o wide
+  156  kubectl delete pods vm-deploy-86dcfdf4c6-44msq
+  157  kubectl get pods -o wide
+  158  echo 'apiVersion: apps/v1
+  159  kind: Deployment
+  160  metadata:
+  161    name: vm-deploy
+  162    labels:
+  163      app: nginx
+  164  spec:
+  165    replicas: 10
+  166    selector:
+  167      matchLabels:
+  168        app: nginx
+  169    template:
+  170      metadata:
+  171        labels:
+  172          app: nginx
+  173      spec:
+  174        containers:
+  175        - name: nginx
+  176          image: vinodhk070/vmtutes:v1
+  177          ports:
+  178          - containerPort: 80' | kubectl apply -f -
+  179  kubectl get pods -o wide
+  180  echo 'apiVersion: apps/v1
+  181  kind: Deployment
+  182  metadata:
+  183    name: vm-deploy
+  184    labels:
+  185      app: nginx
+  186  spec:
+  187    replicas: 3
+  188    selector:
+  189      matchLabels:
+  190        app: nginx
+  191    template:
+  192      metadata:
+  193        labels:
+  194          app: nginx
+  195      spec:
+  196        containers:
+  197        - name: nginx
+  198          image: vinodhk070/vmtutes:v1
+  199          ports:
+  200          - containerPort: 80' | kubectl apply -f -
+  201  kubectl get pods -o wide
+  202  kops delete cluster --name "themurali.xyz" --state=s3://themurali.xyz --yes
+  203  kops get cluster --state=s3://themurali.xyz
+  204  kops create cluster --name themurali.xyz --state=s3://themurali.xyz --zones=us-east-1b --node-count=2 --node-size=t3.medium --master-size=t3.medium --master-volume-size 20 --node-volume-size 10 --dns-zone=themurali.xyz --yes
+  205  kops validate cluster --name themurali.xyz --state=s3://themurali.xyz
+  206  kubectl get pods -A
+  207  kubectl get pods
+  208  echo 'apiVersion: apps/v1
+  209  kind: Deployment
+  210  metadata:
+  211    name: vm-deploy
+  212    labels:
+  213      app: nginx
+  214  spec:
+  215    replicas: 10
+  216    selector:
+  217      matchLabels:
+  218        app: nginx
+  219    template:
+  220      metadata:
+  221        labels:
+  222          app: nginx
+  223      spec:
+  224        containers:
+  225        - name: nginx
+  226          image: nginx:1.14.2
+  227          ports:
+  228          - containerPort: 80' | kubectl apply -f -
+  229  kubectl get deploy
+  230  kubectl get po
+  231  echo 'apiVersion: apps/v1
+  232  kind: Deployment
+  233  metadata:
+  234    name: vm-deploy
+  235    labels:
+  236      app: nginx
+  237  spec:
+  238    replicas: 10
+  239    selector:
+  240      matchLabels:
+  241        app: nginx
+  242    template:
+  243      metadata:
+  244        labels:
+  245          app: nginx
+  246      spec:
+  247        containers:
+  248        - name: nginx
+  249          image: vinodhk070/vmtutes:v1
+  250          ports:
+  251          - containerPort: 80' | kubectl apply -f -
+  252  kubectl get pods
+  253  ls
+  254  kubectl get pods
+  255  kops delete cluster --name "themurali.xyz" --state=s3://themurali.xyz --yes
+  256  kops get cluster --state=s3://themurali.xyz
+  257  kops create cluster --name themurali.xyz --state=s3://themurali.xyz --zones=us-east-1b --node-count=2 --node-size=t3.medium --master-size=t3.medium --master-volume-size 20 --node-volume-size 10 --dns-zone=themurali.xyz --yes
+  258  kops validate cluster --name themurali.xyz --state=s3://themurali.xyz
+  259  echo 'apiVersion: apps/v1
+  260  kind: Deployment
+  261  metadata:
+  262    name: nginx-deployment
+  263    labels:
+  264      app: nginx
+  265  spec:
+  266    replicas: 10
+  267    selector:
+  268      matchLabels:
+  269        app: nginx
+  270    template:
+  271      metadata:
+  272        labels:
+  273          app: nginx
+  274      spec:
+  275        containers:
+  276        - name: nginx
+  277          image: nginx:1.14.2
+  278          ports:
+  279          - containerPort: 80' | kubectl apply -f -
+  280  kubectl get deploy
+  281  kubectl delete deploy nginx-deployment
+  282  kubectl get deploy
+  283  echo'apiVersion: apps/v1
+  284  kind: Deployment
+  285  metadata:
+  286    name: vm-deploy
+  287    labels:
+  288      app: nginx
+  289  spec:
+  290    replicas: 10
+  291    selector:
+  292      matchLabels:
+  293        app: nginx
+  294    template:
+  295      metadata:
+  296        labels:
+  297          app: nginx
+  298      spec:
+  299        containers:
+  300        - name: nginx
+  301          image: vinodhk070/vmtutes:v1
+  302          ports:
+  303          - containerPort: 80
+  304  echo 'apiVersion: apps/v1
+  305  kind: Deployment
+  306  metadata:
+  307    name: vm-deploy
+  308    labels:
+  309      app: nginx
+  310  spec:
+  311    replicas: 10
+  312    selector:
+  313      matchLabels:
+  314        app: nginx
+  315    template:
+  316      metadata:
+  317        labels:
+  318          app: nginx
+  319      spec:
+  320        containers:
+  321        - name: nginx
+  322          image: vinodhk070/vmtutes:v1
+  323          ports:
+  324          - containerPort: 80' | kubectl apply -f -
+  325  kubectl get deploy
+  326  kubectl get po
+  327  echo 'apiVersion: apps/v1
+  328  kind: Deployment
+  329  metadata:
+  330    name: vm-deploy
+  331    labels:
+  332      app: nginx
+  333  spec:
+  334    replicas: 10
+  335    selector:
+  336      matchLabels:
+  337        app: nginx
+  338    template:
+  339      metadata:
+  340        labels:
+  341          app: nginx
+  342      spec:
+  343        containers:
+  344        - name: nginx
+  345          image: vinodhk070/vmtutes:v1
+  346          ports:
+  347          - containerPort: 80' | kubectl apply -f -
+  348  kubectl get po
+  349  echo 'apiVersion: apps/v1
+  350  kind: Deployment
+  351  metadata:
+  352    name: vm-deploy
+  353    labels:
+  354      app: nginx
+  355  spec:
+  356    replicas: 10
+  357    selector:
+  358      matchLabels:
+  359        app: nginx
+  360    template:
+  361      metadata:
+  362        labels:
+  363          app: nginx
+  364      spec:
+  365        containers:
+  366        - name: nginx
+  367          image: nginx
+  368          ports:
+  369          - containerPort: 80' | kubectl apply -f -
+  370  kubectl get po
+  371  echo 'apiVersion: apps/v1
+  372  kind: Deployment
+  373  metadata:
+  374    name: vm-deploy
+  375    labels:
+  376      app: nginx
+  377  spec:
+  378    replicas: 10
+  379    selector:
+  380      matchLabels:
+  381        app: nginx
+  382    template:
+  383      metadata:
+  384        labels:
+  385          app: nginx
+  386      spec:
+  387        containers:
+  388        - name: nginx
+  389          image: vinodhk070/vmtutes:v1
+  390          ports:
+  391          - containerPort: 80' | kubectl apply -f -
+  392  kubectl get po
+  393  kubectl get po -- watch
+  394  kubectl get po --watch
+  395  kubectl get po -0 wide
+  396  kubectl get po -o wide
+  397  kubectl get svc
+  398  kubectl expose deploy vm-deploy --port=8000 --target-port=80 --type=clusterIP -o yaml --dry-run=client
+  399  echo 'apiVersion: v1
+  400  kind: Service
+  401  metadata:
+  402    labels:
+  403      app: nginx
+  404    name: vm-deploy
+  405  spec:
+  406    ports:
+  407    - port: 8000
+  408      protocol: TCP
+  409      targetPort: 80
+  410    selector:
+  411      app: nginx
+  412    type: clusterIP' | kubectl apply -f -
+  413  echo 'apiVersion: v1
+  414  kind: Service
+  415  metadata:
+  416    labels:
+  417      app: nginx
+  418    name: vm-deploy
+  419  spec:
+  420    ports:
+  421    - port: 8000
+  422      protocol: TCP
+  423      targetPort: 80
+  424    selector:
+  425      app: nginx
+  426    type: ClusterIP' | kubectl apply -f -
+  427  kubectl get svc
+  428  kubectl get pods
+  429  kubectl get po
+  430  kubectl get po -o wide
+  431  ls
+  432  kubectl get po -o wide
+  433  kubectl exec -it 100.96.2.170 -- bash
+  434  kubectl exec -it vm-deploy-5d577d68c4-4p5zv -- bash
+  435  kubectl get service
+  436  clear
+  437  kubectl get service
+  438  echo 'apiVersion: v1
+  439  kind: Service
+  440  metadata:
+  441    labels:
+  442      app: nginx
+  443    name: vm-deploy-01
+  444  spec:
+  445    ports:
+  446    - port: 8000
+  447      protocol: TCP
+  448      targetPort: 80
+  449    selector:
+  450      app: nginx
+  451    type: NodePort' | kubectl apply -f -
+  452  kubectl get svc
+  453  kubectl delete svc vm-deploy-01
+  454  kubectl get svc
+  455  echo 'apiVersion: v1
+  456  kind: Service
+  457  metadata:
+  458    labels:
+  459      app: nginx
+  460    name: vm-deploy-01
+  461  spec:
+  462    ports:
+  463    - port: 8080
+  464      protocol: TCP
+  465      targetPort: 80
+  466   nodeport: 32111
+  467    selector:
+  468      app: nginx
+  469    type: NodePort' | kubectl apply -f -
+  470  echo 'apiVersion: v1
+  471  kind: Service
+  472  metadata:
+  473    labels:
+  474      app: nginx
+  475    name: vm-deploy-01
+  476  spec:
+  477    ports:
+  478    - port: 8080
+  479      protocol: TCP
+  480      targetPort: 80
+  481      nodeport: 32111
+  482    selector:
+  483      app: nginx
+  484    type: NodePort' | kubectl apply -f -
+  485  kubectl get po
+  486  kubectl get svc
+  487  echo 'apiVersion: v1
+  488  kind: Service
+  489  metadata:
+  490    labels:
+  491      app: nginx
+  492    name: vm-deploy-01
+  493  spec:
+  494    ports:
+  495    - port: 8080
+  496      protocol: TCP
+  497      targetPort: 80
+  498   nodeport: 32111
+  499    selector:
+  500      app: nginx
+  501    type: NodePort | kubectl apply -f -
+  502  echo 'apiVersion: v1
+  503  kind: Service
+  504  metadata:
+  505    labels:
+  506      app: nginx
+  507    name: vm-deploy-01
+  508  spec:
+  509    ports:
+  510    - port: 8080
+  511      protocol: TCP
+  512      targetPort: 80
+  513   nodeport: 32111
+  514    selector:
+  515      app: nginx
+  516    type: NodePort' | kubectl apply -f -
+  517  echo 'apiVersion: v1
+  518  kind: Service
+  519  metadata:
+  520    labels:
+  521      app: nginx
+  522    name: vm-deploy-01
+  523  spec:
+  524    ports:
+  525    - port: 8080
+  526      protocol: TCP
+  527      targetPort: 80
+  528   nodePort: 32111
+  529    selector:
+  530      app: nginx
+  531    type: NodePort' | kubectl apply -f -
+  532  echo 'apiVersion: v1
+  533  kind: Service
+  534  metadata:
+  535    labels:
+  536      app: nginx
+  537    name: vm-deploy-01
+  538  spec:
+  539    ports:
+  540    - port: 8080
+  541      protocol: TCP
+  542      targetPort: 80
+  543      nodePort: 32111
+  544    selector:
+  545      app: nginx
+  546    type: NodePort' | kubectl apply -f -
+  547  kubectl get svc
+  548  kubectl describe svc vm-deploy-01
+  549  echo 'apiVersion: v1
+  550  kind: Service
+  551  metadata:
+  552    labels:
+  553      app: nginx
+  554    name: vm-deploy-02
+  555  spec:
+  556    ports:
+  557    - port: 9000
+  558      protocol: TCP
+  559      targetPort: 80
+  560    selector:
+  561      app: nginx
+  562    type: LoadBalancer' | kubectl apply -f -
+  563  kubectl get svc
+  564  kubectl describe vm-deploy-02
+  565  kubectl describe svc vm-deploy-02
+  566  clear
+  567  kubectl create ns vmtutes
+  568  kubectl get ns
+  569  kubectl -n vmtutes get pods
+  570  kubectl -n vmtutes run vm1 --image=centos:latest
+  571  kubectl -n vmtutes get po
+  572  kubectl -n vmtutes expose pod vm1 --port=2000 --target-port=80
+  573  kubectl -n vmtutes get svc
+  574  ls
+  575  kops delete cluster --name "themurali.xyz" --state=s3://themurali.xyz --yes
+  576  kops get cluster --state=s3://themurali.xyz
+  577  clear
+  578  kops create cluster --name themurali.xyz --state=s3://themurali.xyz --zones=us-east-1b --node-count=2 --node-size=t3.medium --master-size=t3.medium --master-volume-size 20 --node-volume-size 10 --dns-zone=themurali.xyz --yes
+  579  kops validate cluster --name themurali.xyz --state=s3://themurali.xyz
+  580  kubectl get po
+  581  kubectl get ns
+  582  kubectl create ns vmtutes
+  583  kubectl get ns
+  584  kubectl -n vmtutes run vm1 --image nginx
+  585  kubectl get po
+  586  kubectl get po -n vmtutes
+  587  kubectl -n vmtutes describe vm1
+  588  kubectl -n vmtutes describe pod vm1
+  589  ls
+  590  vi label.yaml
+  591  cat label.yaml 
+  592  echo 'apiVersion: v1
+kind: Service
+metadata:
+  name: vmtutes
+  labels:
+    app: nginx
+    vmtutes: Vinodh-Machireddy-Tutorials
+    tutes: tutorials
+spec:
+  containers:
+  - name: first-container
+    image: nginx' | kubectl apply -f -
+  593  vi label.yaml 
+  594  cat label.yaml 
+  595  echo 'apiVersion: v1
+kind: Pod
+metadata:
+  name: vmtutes
+  labels:
+    app: nginx
+    vmtutes: Vinodh-Machireddy-Tutorials
+    tutes: tutorials
+spec:
+  containers:
+  - name: first-container
+    image: nginx' | kubectl apply -f -
+  596  kubectl get pods
+  597  kubectl describe pod vmtutes
+  598  kubectl get po -l app=nginx
+  599  kubectl get po -l app nginx
+  600  kubectl get po -l app=nginx
+  601  kubectl get pods --show-labels
+  602  kubectl label pod vmtutes team=dev org=vm
+  603  kubectl describe vmtutes
+  604  kubectl describe pod vmtutes
+  605  kubectl label pod vmtutes org=vmtutes --overwrite
+  606  kubectl describe pod vmtutes
+  607  kubectl pod label vmtutes org-
+  608  kubectl label pod vmtutes org-
+  609  kubectl get pods --field-selector status.phase=Running
+  610  kubectl get pods --field-selector metadata.name=vmtutes
+  611  kubectl get pods --field-selector metadata.namespace=vmtutes
+  612  kubectl get pods -A
+  613  kubectl get pods --field-selector=metadata.name=vmtutes
+  614  kubectl get pods --field-selector=metadata.namespace=vmtutes
+  615  kubectl get pods -A
+  616  clear
+  617  echo 'apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    container: init-container
+   name: vmtutes-pod
+spec:
+  containers:
+    - image: vinodhk070/vmtutes:v1
+      name: nginx-container
+  initContainers:
+    - image: busybox:latest
+      name: init-busybox-1
+      command: ["/bin/sh"]
+      args: ["-c", "sleep 30"]
+    - image: busybox:latest
+      name: init-busybox-1
+      command: ["/bin/sh"]
+      args: ["-c", "sleep 30"]
+    - image: busybox:latest
+      name: init-busybox-1
+      command: ["/bin/sh"]
+      args: ["-c", "sleep 30"]' | kubectl apply -f -
+  618  echo 'apiVersion: v1
+kind: Pod
+metadata:
+  name: vmtutes-pod
+  labels:
+    container: init-container
+spec:
+  containers:
+    - image: vinodhk070/vmtutes:v1
+      name: nginx-container
+  initContainers:
+    - image: busybox:latest
+      name: init-busybox-1
+      command: ["/bin/sh"]
+      args: ["-c", "sleep 30"]
+    - image: busybox:latest
+      name: init-busybox-1
+      command: ["/bin/sh"]
+      args: ["-c", "sleep 30"]
+    - image: busybox:latest
+      name: init-busybox-1
+      command: ["/bin/sh"]
+      args: ["-c", "sleep 30"]' | kubectl apply -f -
+  619  echo 'apiVersion: v1
+kind: Pod
+metadata:
+  name: vmtutes-pod
+  labels:
+    container: init-container
+spec:
+  containers:
+    - image: vinodhk070/vmtutes:v1
+      name: nginx-container
+  initContainers:
+    - image: busybox:latest
+      name: init-busybox-1
+      command: ["/bin/sh"]
+      args: ["-c", "sleep 30"]
+    - image: busybox:latest
+      name: init-busybox-2
+      command: ["/bin/sh"]
+      args: ["-c", "sleep 30"]
+    - image: busybox:latest
+      name: init-busybox-3
+      command: ["/bin/sh"]
+      args: ["-c", "sleep 30"]' | kubectl apply -f -
+  620  kubectl get pods
+  621  watch -n 1 kubectl get pods
+  622  kubectl get po
+  623  kubectl describe pod vmtutes-pod

@@ -1,0 +1,14 @@
+We have all embedded jobs in Jenkins, and it seems you don't have experience with embedded jobs. Are you comfortable working with those jobs?
+We have 10 upstream build jobs, 1 downstream artifact job, and after the completion of every upstream build job, the downstream artifact job will run and store the artifacts in that job. Then, we have a few test jobs, and every test job has to run after the completion of a particular build job, requiring all artifacts to run. If build job 1 is completed, then the downstream artifact job will run, and that particular test job should run. How can you resolve this issue?
+How do you obtain the process ID?
+We have one process id and how to you send signal to that process id?
+Print the current working directory, navigate to that directory, create a file, and paste the current working directory into that file?
+We have one text file. How do you count the words? Write a shell script for that?
+Write a shell script to print numbers from 1 to 100 without using any loops?
+Suppose i)we have $i=ABCDEFG. if $i=="CDE*" then which statement it will go to if statement or else statement.
+	ii)we have $i=ABCDEG. if $i==CDE* then which statement it will go to if statement or else statement.
+Suppose there is a dependency, and we require artifacts from another Jenkins job. How will you resolve this issue?
+How will you configure commit trigger in jenkins?
+Suppose we have four files: .xml, .txt, .xls, .csv. Each test job will create these four files, and the files are stored in the same location. Then, how will you get the respective job files?
+I have two Jenkins servers, and there is an artifact dependency for each build from Jenkins Server 2 to Jenkins Server 1. So, how will you resolve this issue?
+We have a square-shaped pond with trees along all four edges. Without cutting the trees or digging the pond, the shape of the pond should remain square, but the pond's capacity should increase. How you will do that?
